@@ -33,7 +33,7 @@ cover:
 # Avoiding common pitfalls on .NET MAUI
 
 ## Foreword
- I have been working with Xamarin/MAUI for some years now. The premise sounds great develope native multiplatform applications using .NET Stack.
+ I have been working with Xamarin/MAUI for some years now. The premise sounds great develop native multiplatform applications using .NET Stack.
 What I have found working with long running MAUI Android/iOS applications is that MAUI can leak memory surprisingly easily.
 I’ve primarily used `dotnet-dsrouter`, `dotnet-gcdump`, and `MemoryToolkit.Maui` to profile memory usage
  - [https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dsrouter](dotnet-dsrouter)
