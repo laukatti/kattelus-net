@@ -60,9 +60,11 @@ params:
 
   socialIcons:
     - name: github
-      url: "https://github.com/"
+      url: "https://github.com/laukatti"
     - name: linkedin
       url: "https://linkedin.com/in/lauri-kattelus"
+    - name: email
+      url: "mailto:lauri@kattelus.net"
 
   cover:
     hidden: true # hide everywhere but not in structured data
