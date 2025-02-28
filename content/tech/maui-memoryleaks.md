@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI - Common memory leak pitfalls "
-date: 2020-09-15T11:30:03+00:00
+date: 2025-02-28T16:30:03+00:00
 # weight: 1
 # aliases: ["/first"]
 tags: [".NET", "MAUI", "Memory Leak", "Memory", "Leak", "Android"]
@@ -34,7 +34,7 @@ cover:
 
 ## Foreword
  I have been working with Xamarin/MAUI for some years now. The premise sounds great develope native multiplatform applications using .NET Stack.
-What I have found working with long running MAUI Android/iOS applications is that MAUI can leak memory surprisingly easily. 
+What I have found working with long running MAUI Android/iOS applications is that MAUI can leak memory surprisingly easily.
 I’ve primarily used `dotnet-dsrouter`, `dotnet-gcdump`, and `MemoryToolkit.Maui` to profile memory usage
  - [https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dsrouter](dotnet-dsrouter)
  - [https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-gcdump](dotnet-gcdump)
@@ -75,7 +75,7 @@ I’ve found that setting the BindingContext to null when navigating away from a
 
 By setting the BindingContext to null in your navigation logic, you can override `OnBindingContextChanged()` and stop animations or unsubscribe from events.
 
-e.g having this kind of Navigation logic when popping a page from stack can help you a lot 
+e.g having this kind of Navigation logic when popping a page from stack can help you a lot
 
 ```
 //Navigation logic handling class

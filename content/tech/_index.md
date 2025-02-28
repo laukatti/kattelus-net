@@ -1,6 +1,6 @@
 ---
 title: "Tech"
-date: 2023-02-22
+date: 2025-02-28
 menu:
   main:
     name: "Tech"
