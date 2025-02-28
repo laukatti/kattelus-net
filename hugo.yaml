@@ -93,7 +93,7 @@ menu:
       weight: 20
     - identifier: kattelus
       name: kattelus.net
-      url: https://kattelus.org
+      url: https://kattelus.net
       weight: 30
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
