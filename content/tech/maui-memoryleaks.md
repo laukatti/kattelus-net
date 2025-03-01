@@ -29,20 +29,24 @@ cover:
     caption: "<text>" # display caption under cover
     relative: false # when using page bundles set this to true
     hidden: true # only hide on current single page
+editPost:
+    URL: "https://github.com/laukatti/kattelus-net/"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: false # to append file path to Edit link
 ---
 # Avoiding common pitfalls on .NET MAUI
 
 ## Foreword
  I have been working with Xamarin/MAUI for some years now. The premise sounds great, develop native multiplatform applications using .NET Stack.
-What I have found working with long running MAUI Android/iOS applications is that MAUI can leak memory surprisingly easily.
-I’ve primarily used `dotnet-dsrouter, dotnet-gcdump`, and `MemoryToolkit.Maui` to profile memory usage
+ In my experience with long running MAUI Android/iOS applications, I have found that memory is surprisingly easily leaked.
+ I’ve primarily used `dotnet-dsrouter, dotnet-gcdump`, and `MemoryToolkit.Maui` to profile memory usage.
  - [https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dsrouter](dotnet-dsrouter)
  - [https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-gcdump](dotnet-gcdump)
  - [https://github.com/AdamEssenmacher/MemoryToolkit.Maui](MemoryToolkit.Maui)
 
-The first two tools, dotnet-dsrouter, dotnet-gcdump, help capture memory dumps from Android devices. The last one, MemoryToolkit.Maui simplifies memory management of views. However, MemoryToolkit.Maui may occasionally report non-existent memory leaks if it prematurely assumes a page should have been disposed. Because of this, it’s still crucial to collect real memory dumps using `dotnet-dsrouter` and `dotnet-gcdump` to investigate potential leaks.
+The first two tools, dotnet-dsrouter, dotnet-gcdump, are used to capture memory dumps from Android devices. The last one, MemoryToolkit.Maui simplifies memory management of views. However, MemoryToolkit.Maui may occasionally report non-existent memory leaks if it prematurely assumes a page should have been disposed. Because of this, it’s still crucial to collect real memory dumps using `dotnet-dsrouter` and `dotnet-gcdump` to investigate potential leaks.
 
-Even though MAUI still has a few bugs, I enjoy working with it overall.
+Even though MAUI still has some bugs, I enjoy working with it overall.
 
 Here are some easy-to-leak memory scenarios that I’ve learned about while profiling memory leaks on MAUI.
 
@@ -87,7 +91,7 @@ public async Task PopAsync(){
     viewModel.CleanUp();
 }
 ```
-In the code-behind, you can observe when the page is no longer needed (often after `PopAsync()` or a removal from the `NavigationStack`) and perform cleanup actions like stopping timers.
+In the code-behind, you can observe when the page is no longer needed (often after `PopAsync()` or a removal from the `NavigationStack`) to perform cleanup actions like stopping timers.
 
 ```
 	override On`BindingContext`Changed()
@@ -102,10 +106,10 @@ Below are elements I’ve found that can easily leak memory if not handled corre
 - Animations
     - Be sure to stop animation before removing page from stack.
 - Timers
-    - Don't use anonymous delegates to handle timer ticks instead create event handler and unsubscribe from it before removing page from stack.
+    - Don't use anonymous delegates to handle timer ticks, instead create event handler and unsubscribe from it before removing page from stack.
 - CarouselControl handler
     - As the time of writing this blog CarouselControl is not disposed correctly when page is disposed. Developer needs to manually Disconnect view handler from it with `carouselView.Handler.DisconnectHandler()`.
-Not handling correctly these situations may cause the XAML page to stay on memory until application is closed.
+Not handling these situations correctly, may cause the XAML page to stay on memory until application is closed.
 
 ## WeakEventManager
 When you have a long-lived publisher object and short-lived subscriber objects, consider using a WeakEventManager for events. This pattern adds a bit of overhead but significantly reduces the risk of memory leaks.
