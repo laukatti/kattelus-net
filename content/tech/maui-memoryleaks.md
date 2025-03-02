@@ -34,7 +34,7 @@ editPost:
     Text: "Suggest Changes" # edit text
     appendFilePath: false # to append file path to Edit link
 ---
-# Avoiding common pitfalls on .NET MAUI
+# .NET MAUI - Common memory leak pitfalls
 
 ## Foreword
  I have been working with Xamarin/MAUI for some years now. The premise sounds great, develop native multiplatform applications using .NET Stack.
